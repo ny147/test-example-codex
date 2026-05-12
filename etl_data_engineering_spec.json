@@ -1,0 +1,234 @@
+{
+  "title": "Data Engineering ETL Pipeline",
+  "theme": "light",
+  "groups": [
+    {
+      "id": "ingestion",
+      "label": "Ingestion",
+      "x": 40,
+      "y": 100,
+      "width": 620,
+      "height": 270,
+      "fontSize": 16
+    },
+    {
+      "id": "processing",
+      "label": "Processing",
+      "x": 710,
+      "y": 100,
+      "width": 780,
+      "height": 270,
+      "fontSize": 16
+    },
+    {
+      "id": "serving",
+      "label": "Serving",
+      "x": 1540,
+      "y": 100,
+      "width": 520,
+      "height": 270,
+      "fontSize": 16
+    },
+    {
+      "id": "operations",
+      "label": "Operations layer",
+      "x": 40,
+      "y": 450,
+      "width": 2020,
+      "height": 210,
+      "fontSize": 16
+    }
+  ],
+  "nodes": [
+    {
+      "id": "sources",
+      "label": "Sources\nApps, APIs, DBs",
+      "type": "rectangle",
+      "x": 90,
+      "y": 180,
+      "width": 220,
+      "height": 105,
+      "fontSize": 16,
+      "backgroundColor": "#e8f4ff",
+      "strokeColor": "#1d4ed8"
+    },
+    {
+      "id": "extract",
+      "label": "Extract\nBatch + CDC",
+      "type": "rectangle",
+      "x": 390,
+      "y": 180,
+      "width": 220,
+      "height": 105,
+      "fontSize": 16,
+      "backgroundColor": "#f0f9ff",
+      "strokeColor": "#0369a1"
+    },
+    {
+      "id": "staging",
+      "label": "Raw Staging\nObject storage",
+      "type": "rectangle",
+      "x": 760,
+      "y": 180,
+      "width": 220,
+      "height": 105,
+      "fontSize": 16,
+      "backgroundColor": "#eef2ff",
+      "strokeColor": "#4338ca"
+    },
+    {
+      "id": "transform",
+      "label": "Transform\nClean + model",
+      "type": "rectangle",
+      "x": 1060,
+      "y": 180,
+      "width": 220,
+      "height": 105,
+      "fontSize": 16,
+      "backgroundColor": "#f5f3ff",
+      "strokeColor": "#7c3aed"
+    },
+    {
+      "id": "quality",
+      "label": "Quality\nTests pass?",
+      "type": "diamond",
+      "x": 1360,
+      "y": 160,
+      "width": 150,
+      "height": 150,
+      "fontSize": 15,
+      "backgroundColor": "#fff7ed",
+      "strokeColor": "#c2410c"
+    },
+    {
+      "id": "warehouse",
+      "label": "Warehouse\nCurated tables",
+      "type": "rectangle",
+      "x": 1600,
+      "y": 180,
+      "width": 220,
+      "height": 105,
+      "fontSize": 16,
+      "backgroundColor": "#ecfdf5",
+      "strokeColor": "#047857"
+    },
+    {
+      "id": "consumers",
+      "label": "Consumers\nBI, ML, Apps",
+      "type": "rectangle",
+      "x": 1880,
+      "y": 180,
+      "width": 150,
+      "height": 105,
+      "fontSize": 15,
+      "backgroundColor": "#fefce8",
+      "strokeColor": "#a16207"
+    },
+    {
+      "id": "orchestrator",
+      "label": "Orchestration\nDAGs, retries",
+      "type": "rectangle",
+      "x": 120,
+      "y": 525,
+      "width": 300,
+      "height": 85,
+      "fontSize": 16,
+      "backgroundColor": "#f8fafc",
+      "strokeColor": "#334155"
+    },
+    {
+      "id": "catalog",
+      "label": "Catalog\nLineage, owners",
+      "type": "rectangle",
+      "x": 570,
+      "y": 525,
+      "width": 300,
+      "height": 85,
+      "fontSize": 16,
+      "backgroundColor": "#f8fafc",
+      "strokeColor": "#334155"
+    },
+    {
+      "id": "monitoring",
+      "label": "Monitoring\nSLA alerts",
+      "type": "rectangle",
+      "x": 1020,
+      "y": 525,
+      "width": 300,
+      "height": 85,
+      "fontSize": 16,
+      "backgroundColor": "#f8fafc",
+      "strokeColor": "#334155"
+    },
+    {
+      "id": "governance",
+      "label": "Governance\nAccess, audit",
+      "type": "rectangle",
+      "x": 1470,
+      "y": 525,
+      "width": 300,
+      "height": 85,
+      "fontSize": 16,
+      "backgroundColor": "#f8fafc",
+      "strokeColor": "#334155"
+    }
+  ],
+  "edges": [
+    {
+      "from": "sources",
+      "to": "extract"
+    },
+    {
+      "from": "extract",
+      "to": "staging"
+    },
+    {
+      "from": "staging",
+      "to": "transform"
+    },
+    {
+      "from": "transform",
+      "to": "quality"
+    },
+    {
+      "from": "quality",
+      "to": "warehouse"
+    },
+    {
+      "from": "warehouse",
+      "to": "consumers"
+    },
+    {
+      "from": "quality",
+      "to": "transform",
+      "startArrowhead": "arrow",
+      "endArrowhead": "arrow",
+      "strokeColor": "#c2410c"
+    },
+    {
+      "from": "orchestrator",
+      "to": "extract",
+      "strokeColor": "#64748b"
+    },
+    {
+      "from": "orchestrator",
+      "to": "transform",
+      "strokeColor": "#64748b"
+    },
+    {
+      "from": "catalog",
+      "to": "warehouse",
+      "strokeColor": "#64748b"
+    },
+    {
+      "from": "monitoring",
+      "to": "quality",
+      "strokeColor": "#64748b"
+    },
+    {
+      "from": "governance",
+      "to": "consumers",
+      "strokeColor": "#64748b"
+    }
+  ]
+}

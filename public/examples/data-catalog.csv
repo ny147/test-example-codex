@@ -1,0 +1,4 @@
+name,owner,domain,type,status,sensitivity,freshness,records,description
+Marketing Attribution Mart,Marketing Analytics,Marketing,Warehouse Table,Certified,Internal,2026-05-12,245600,Campaign touchpoints matched to opportunities and pipeline influence.
+Finance Close Checklist,Finance Systems,Finance,Spreadsheet Export,Draft,Confidential,2026-05-09,840,Monthly close checklist with entity ownership and completion timestamps.
+IoT Device Health Stream,Platform Telemetry,Operations,Event Stream,Certified,Internal,2026-05-12,7342000,Device heartbeat and diagnostic events for fleet reliability monitoring.
